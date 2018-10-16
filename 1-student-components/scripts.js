@@ -72,3 +72,44 @@ const students = [
       score: 95
   }
 ]
+
+
+const container = document.querySelector("#container");
+
+const h1 = (title, style) => `<h1 class="${style}">${title}</h1>`;
+const section = (title, style) => `<section class="bordered dashed ${style}">${title}</section>`;
+const aside = (title, style) => `<aside class="${style}">${title}</aside>`;
+
+// const student = (studentName, studentClass, studentInfo) => `
+//   <div id="student">
+//     ${h1(name, "xx-large")}
+//     ${section(class, "section--padded")}
+//     ${aside(info, "pushRight")}
+//   </div>
+// `;
+
+for (student of students) {
+  let studentComponent = `<div class="student">`;
+  
+  if (student.score >= 60) {
+    studentComponent += `
+      ${h1(student.name, "xx-large passing")}
+      ${section(student.class, "border dashed section--padded")}
+      ${aside(student.info, "pushRight")}
+    `;
+  } else {
+    studentComponent += `
+      ${h1(student.name, "xx-large failing")}
+      ${section(student.class, "border dashed section--padded")}
+      ${aside(student.info, "pushRight")}
+    `;
+  }
+  studentComponent += `</div>`;
+  container.innerHTML += studentComponent;
+}
+
+/* <div class="student">
+  <h1 class="xx-large green">Student Name</h1>
+  <section class="bordered dashed section--padded">Student class</section>
+  <aside class="pushRight">Additional information</aside>
+</div> */
