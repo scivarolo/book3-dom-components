@@ -79,20 +79,32 @@ const h1 = (title, style) => `<h1 class="${style}">${title}</h1>`;
 const section = (title, style) => `<section class="bordered dashed ${style}">${title}</section>`;
 const aside = (title, style) => `<aside class="${style}">${title}</aside>`;
 
-const student = (name, clazz, info, status) => `
-  <div class="student">
-    ${h1(name, status)}
-    ${section(clazz)}
-    ${aside(info)}
-  </div>
-`;
-for (currentStudent of students) {
-  let studentComponent = "";
+// const student = (studentName, studentClass, studentInfo) => `
+//   <div id="student">
+//     ${h1(name, "xx-large")}
+//     ${section(class, "section--padded")}
+//     ${aside(info, "pushRight")}
+//   </div>
+// `;
 
-  if (currentStudent.score >= 60) {
-    studentComponent = student(currentStudent.name, currentStudent.class, currentStudent.info, "passing");
+for (student of students) {
+  let studentComponent = `<div class="student">`;
+
+  if (student.score >= 60) {
+    studentComponent += `
+      ${h1(student.name, "xx-large passing")}
+      ${section(student.class, "border dashed section--padded")}
+      ${aside(student.info, "pushRight")}
+    `;
   } else {
-    studentComponent = student(currentStudent.name, currentStudent.class, currentStudent.info, "failing");
+    studentComponent += `
+      ${h1(student.name, "xx-large failing")}
+      ${section(student.class, "border dashed section--padded")}
+      ${aside(student.info, "pushRight")}
+    `;
   }
+  studentComponent += `</div>`;
+  
+  // Add each student to the container element
   container.innerHTML += studentComponent;
 }
