@@ -1,5 +1,6 @@
 // In your JavaScript, use querySelector() to obtain a reference to that article DOM element.
 const messagesContainer = document.querySelector('#messages');
+const messagesFrag = document.createDocumentFragment();
 
 let messages = [
   `Are we doing fireworks this year?`,
@@ -26,7 +27,7 @@ const message = (content) => {
   let messageElement = document.createElement('section');
   messageElement.className = 'message';
   messageElement.textContent = content;
-  messagesContainer.appendChild(messageElement);
+  messagesFrag.appendChild(messageElement);
 }
 
 //Experiment with rest operator to allow for unlimited arguments.
@@ -34,6 +35,8 @@ const outputMessages = (...messageArray) => {
   messageArray.forEach((currentMessage) => {
     message(currentMessage);
   });
+
+  messagesContainer.appendChild(messagesFrag);
 }
 
 outputMessages(...messages, ...moreMessages, newMessage);
