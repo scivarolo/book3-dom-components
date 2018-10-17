@@ -79,13 +79,6 @@ const h1 = (title, style) => `<h1 class="${style}">${title}</h1>`;
 const section = (title, style) => `<section class="bordered dashed ${style}">${title}</section>`;
 const aside = (title, style) => `<aside class="${style}">${title}</aside>`;
 
-// const student = (studentName, studentClass, studentInfo) => `
-//   <div id="student">
-//     ${h1(name, "xx-large")}
-//     ${section(class, "section--padded")}
-//     ${aside(info, "pushRight")}
-//   </div>
-// `;
 const student = (name, clazz, info, status) => `
   <div class="student">
     ${h1(name, status)}
