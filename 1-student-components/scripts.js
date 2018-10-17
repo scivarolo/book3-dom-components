@@ -75,15 +75,13 @@ const students = [{
 
 const container = document.querySelector("#container");
 
-const h1 = (title, style) => `<h1 class="${style}">${title}</h1>`;
-const section = (title, style) => `<section class="bordered dashed ${style}">${title}</section>`;
-const aside = (title, style) => `<aside class="${style}">${title}</aside>`;
+const HTMLelement = (element, content, style) => `<${element} class="${style}">${content}</${element}>`; 
 
 const student = (name, clazz, info, status) => `
   <div class="student">
-    ${h1(name, status)}
-    ${section(clazz)}
-    ${aside(info)}
+    ${HTMLelement("h1", name, status)}
+    ${HTMLelement("section", clazz, "bordered dashed")}
+    ${HTMLelement("aside", info)}
   </div>
 `;
 for (currentStudent of students) {
